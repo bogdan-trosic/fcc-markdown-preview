@@ -1,0 +1,219 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    min-width: 94vw;
+}
+
+.editor-preview-container {
+    display: flex;
+    place-items: center;
+    width: 100%;
+}
+
+.editor, .preview {
+    width: 100%; 
+    height: 90vh;
+    padding: 1.2rem;
+    border: 2px solid var(--fg-color);
+    border-radius: 4px;
+}
+
+.editor {
+    font-family: 'IBM Plex Mono', 'Noto Sans Mono', Courier, monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.4;    
+
+    color: var(--fg-color);
+    background-color: var(--bg-color);
+    outline: none;
+    resize: none;
+}
+
+.preview {
+    overflow: scroll;
+    max-width: 94vw;
+}
+
+.controls {
+    display: flex;
+    place-items: center;
+    width: 100%;
+    margin-top: -4px;
+}
+
+.controls__edit-button, .controls__preview-button {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--bg-color);
+    background-color: var(--fg-color);
+
+    display: flex;
+    place-items: center;
+    place-content: center;
+    width: 50%;
+    padding: 6px;
+    border: none;
+}
+
+.controls__edit-button, .controls__preview-button {
+    cursor: pointer;
+}
+
+.controls__edit-button svg, .controls__preview-button svg {
+    margin-right: 4px;
+}
+
+.controls__edit-button {
+    border-radius: 0 0 0 4px;
+}
+
+.controls__preview-button {
+    border-radius: 0 0 4px 0;
+}
+
+/* DYNAMIC STYLES */
+
+.controls.controls--disabled {
+    pointer-events: none;
+}
+
+.controls--disabled > .controls__edit-button, .controls--disabled > .controls__preview-button {
+    color: var(--bg-color);
+    background-color: var(--fg-color);
+}
+
+.controls--disabled > .controls__edit-button {
+    border-right: 1px solid var(--bg-color);
+}
+
+.controls--disabled > .controls__preview-button {
+    border-left: 1px solid var(--bg-color);
+}
+
+.control--active {
+    color: var(--fg-color);
+    background-color: var(--bg-color);
+
+    padding: 5px;
+    border: 2px solid var(--fg-color);
+    border-top: 0;
+}
+
+.control--active + button {
+    padding: 4px;
+    border: 2px solid var(--fg-color);
+}
+
+/* BIGGER SIZES */
+
+@media screen and (min-width: 1280px) {
+    .app {
+        min-width: 0;
+        max-width: 1180px;
+    }
+
+    .editor-preview-container {
+        order: 1;
+        min-width: 0;
+    }
+    
+    .editor, .preview {
+        display: block;
+        width: 50%;
+    }
+
+    .editor {
+        font-size: 1rem;
+
+        margin-block: 0;
+        margin: 0;
+        border-right: 1px solid var(--fg-color);
+        border-radius: 0 0 0 4px;
+    }
+
+    .preview {
+        border-left: 1px solid var(--fg-color);
+        border-radius: 0 0 4px 0;
+    }
+
+    .controls {
+        order: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .controls__edit-button, .controls__preview-button {
+        border: 1px;
+    }
+
+    .controls__edit-button {
+        border-radius: 4px 0 0 0;
+    }
+    
+    .controls__preview-button {
+        border-radius: 0 4px 0 0;
+    }
+}
+
+@media screen and (min-width: 1560px) {
+    .app {
+        max-width: 1440px;
+    }
+}
+
+/* RENDER STYLES */
+
+pre, code {
+    font-family: 'IBM Plex Mono', 'Noto Sans Mono', Courier, monospace;
+    font-weight: 600;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 0rem 0.2rem;
+}
+
+pre code {
+    border: none;
+}
+
+pre {
+    padding: 0.4rem 1rem;
+    max-width: 80ch;
+}
+
+ul {
+    padding-left: 1rem;
+}
+
+li {
+    list-style: square;
+}
+
+blockquote {
+    font-size: 1.2rem;
+    font-weight: 500;
+    max-width: 60ch;
+    margin: 0;
+}
+
+a {
+    color: var(--fg-color);
+    font-weight: 500;
+}
+
+a:hover, a:focus, a:focus-visible {
+    color: var(--fg-color-40p);
+    border-radius: 4px;
+}
+
+a:focus, a:focus-visible {
+    outline: 1px solid var(--fg-color-40p);
+}
+
+img {
+    max-width: 70%;
+    height: auto;
+    border: 1px solid var(--fg-color);
+    border-radius: 4px;
+}
